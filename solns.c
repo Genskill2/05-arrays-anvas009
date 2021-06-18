@@ -1,86 +1,81 @@
-/* Enter your solutions in this file */
 #include <stdio.h>
-#include <stdio.h>
-int max(int a[],int n)
-{
-	int max=0;
-	for (int i=0;i<n;i++)
-	{
-		if (a[i]>max)
-			max=a[i];
-		else
-			continue;
-	}
-	return max;
+/*average function*/
+float average(int arr[], int len){
+  int sum = 0;
+  float avg;
+  for(int p=0; p<len; p++){
+    sum = sum + arr[p];
+  }
+  avg = (float)sum/len;
+  return avg;
 }
-int min(int a[],int n)
-{
-	int min=a[0];
-	for(int i=0;i<n;i++)
-	{
-		if(a[i]<min)
-			min=a[i];
-		else
-			continue;
-	}
-	return min;
+/*factors function*/
+int factors(int num, int arr[]){
+int cpy = num;
+int cnt = 0;
+int cnt1 =0;
+for(int i = 2; i<num/2; i++){
+if(num%i ==0){
+for(int j=2; j<=i; j++){
+if(i%j==0)
+cnt+= 1;
 }
-float average(int a[],int n)
-{
-	int sum=0;
-	float avg=0;
-	for(int i=0;i<n;i++)
-	{
-		sum+=a[i];
-	}
-	avg=sum/n;
-	return avg;
+if(cnt ==1){
+while(cpy%i ==0){
+arr[cnt1] = i;
+cpy/= i;
+cnt1+= 1;
 }
-
-int mode(int a[],int n)
-{
-	int lmax=max(a,n);
-	int lmin=min(a,n);
-	int counts[100],b=-1;
-	for(int i =lmin;i<=lmax;i++)
-		{
-		int cnt=0;
-		for(int j=0;j<n;j++)
-		{
-			if(a[j]==i)
-				cnt++;
-		}
-		counts[++b]=cnt;
-		}
-	int cmax=0,flag=0;
-	for (int i=0;i<=b;i++)
-	{
-		if (counts[i]>cmax)
-		{	cmax=counts[i];
-			flag=i-(0-lmin);
-		}
-		else
-			continue;
-	}
-	return flag;
+cpy = num;}
+cnt = 0;
 }
-    int isprime(int i)
-    {
-	int flag=0;
-			for(int j=2;j<i;j++)
-			{
-				if(i%j==0)
-				{
-					flag=1;
-					break;
-				}
-			}
-			if(flag==0)
-			    return 1;
-			else
-			    return 0;
+else
+continue;}
+return cnt1;
+}
+/* max function*/
+int max(int arr[], int len){
+  int maximum = arr[0];
+  for(int i= 0; i< len; i++){
+    if(arr[i]> maximum)
+      maximum = arr[i];
+  }
+  return maximum;
+       }
+/* min function*/
+     int min( int arr[], int len){
+  int min;
+  min = arr[0];
+  for(int h=0; h<len; h++){
+    if(arr[h]<min){
+      min = arr[h];
     }
-int factors(int n,int a[])
-{
-	int count=0;
-    	int i=2;
+  }
+  return min;
+}
+/* mode function*/
+int mode(int arr[], int len){
+  int ar2[len];
+  int n,p, max;
+  int cnt = 0;
+  for(int i = 0; i< len; i++){
+  n = arr[i];
+  for(int j=0; j<len; j++){
+  if( arr[j] == n)
+  cnt = cnt +1;
+  }
+  ar2[i] = cnt;
+  cnt = 0;
+  }
+  max = ar2[0];
+  for(int h = 0; h< len; h++){
+  if(ar2[h]> max){
+  max = ar2[h];
+  }
+  }
+  for(p =0; p<len; p++){
+  if(max == ar2[p])
+  break;
+  }
+  return arr[p];
+  }
